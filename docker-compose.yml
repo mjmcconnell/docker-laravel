@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  web-server:
+    build: ops/web-server
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    links:
+      - db
+    networks:
+      - laravel-network
+    command: php artisan serve --host=0.0.0.0 --port=80
+
+  db:
+    image: postgres:9.6.2
+    environment:
+      - POSTGRES_USER=laravel
+      - POSTGRES_PASSWORD=laravel
+      - POSTGRES_DB=laravel
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - laravel-network
+
+networks:
+  laravel-network:
+    driver: bridge
