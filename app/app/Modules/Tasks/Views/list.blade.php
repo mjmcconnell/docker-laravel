@@ -1,5 +1,9 @@
 @extends('Base::layouts.app')
 
+@section('extra_scripts')
+    <script src="/js/form.js"></script>
+@endsection
+
 @section('content')
 
     <div class="panel panel-default">
@@ -7,7 +11,7 @@
         <div class="panel-body">
             @include('Base::common.errors')
 
-            <form action="/api/tasks" method="POST" class="form-horizontal">
+            <form id="new-record-form" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -20,7 +24,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" class="btn btn-default" onclick="$(this).CreateRecord();">
                             <i class="fa fa-plus"></i> Add Task
                         </button>
                     </div>
@@ -42,7 +46,7 @@
                 </thead>
                 <tbody>
                     @foreach ($records as $task)
-                        <tr>
+                        <tr class="record-row-{{ $task->id }}">
                             <td>
                                 {{ $task->id }}
                             </td>
@@ -50,12 +54,7 @@
                                 <a href="/tasks/{{ $task->id }}">{{ $task->name }}</a>
                             </td>
                             <td>
-                                <form action="/api/tasks/{{ $task->id }}/delete" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-
-                                    <button>Delete Task</button>
-                                </form>
+                                <button onclick="$(this).DeleteRecord({{ $task->id }});">Delete Task</button>
                             </td>
                         </tr>
                     @endforeach

@@ -23,11 +23,11 @@ Route::group(
     [
         'prefix' => 'api/tasks',
         'namespace' => 'App\Modules\Tasks\Controllers',
-        'middleware' => ['web', 'api'],
+        'middleware' => ['api'],
     ],
     function () {
-        Route::post('/', 'ApiController@add');
-        Route::put('/{id}', 'ApiController@update');
+        Route::post('/', 'ApiController@post');
+        Route::put('/{id}', 'ApiController@post');
         Route::delete('/{id}/delete', 'ApiController@delete');
     }
 );

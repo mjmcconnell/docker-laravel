@@ -1,14 +1,17 @@
 @extends('Base::layouts.app')
 
+@section('extra_scripts')
+    <script src="/js/form.js"></script>
+@endsection
+
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">Update Task</div>
         <div class="panel-body">
             @include('Base::common.errors')
 
-            <form action="/api/tasks" method="POST" class="form-horizontal">
+            <form id="update-record-form" class="form-horizontal">
                 {{ csrf_field() }}
-                {{ method_field('UPDATE') }}
 
                 <div class="form-group">
                     <label for="task" class="col-sm-3 control-label">Task</label>
@@ -20,7 +23,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" class="btn btn-default" onclick="$(this).UpdateRecord({{ $record->id }});">
                             <i class="fa fa-plus"></i> Update
                         </button>
                     </div>
