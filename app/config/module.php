@@ -2,6 +2,7 @@
 
 return  [
     'modules' => [
+       'Base',
        'Tasks',
     ]
 ];

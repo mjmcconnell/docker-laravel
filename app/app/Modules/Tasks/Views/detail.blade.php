@@ -1,8 +1,8 @@
-@extends('Tasks::layouts.app')
+@extends('Base::layouts.app')
 
 @section('content')
     <div class="panel-body">
-        @include('Tasks::common.errors')
+        @include('Base::common.errors')
 
         <form action="/api/tasks" method="POST" class="form-horizontal">
             {{ csrf_field() }}
