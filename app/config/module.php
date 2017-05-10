@@ -3,6 +3,7 @@
 return  [
     'modules' => [
        'Base',
+       'Auth',
        'Tasks',
     ]
 ];

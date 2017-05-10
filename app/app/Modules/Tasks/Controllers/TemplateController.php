@@ -3,6 +3,7 @@
 use Validator;
 use Illuminate\Http\Request;
 
+use Socialite;
 use App\Modules\Base\Controller;
 use App\Modules\Tasks\Models\Task;
 
@@ -20,6 +21,7 @@ class TemplateController extends Controller {
 
     public function list() {
         $records = $this->model->fetch_all();
+
         return view(
             'Tasks::list',
             ['records' => $records]

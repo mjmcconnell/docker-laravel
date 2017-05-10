@@ -26,3 +26,9 @@ RUN apt-get update --fix-missing && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/
 RUN mv /usr/bin/composer.phar /usr/bin/composer
+
+RUN useradd -ms /bin/bash docker
+USER docker
+WORKDIR /app
+
+RUN php composer.phar install
