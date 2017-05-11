@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Modules\Base;
+<?php namespace App\Modules\Base;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

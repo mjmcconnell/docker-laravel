@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 /**
  * Display All Tasks
  */
-Route::get('/', function () {
-    return view('Base::landing');
+Route::group(['middleware' => ['web']], function()
+{
+    Route::get('/', function () {
+        return view('Base::landing');
+    });
 });

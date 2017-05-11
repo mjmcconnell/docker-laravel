@@ -1,9 +1,5 @@
 <?php namespace App\Modules\Tasks\Controllers;
 
-use Validator;
-use Illuminate\Http\Request;
-
-use Socialite;
 use App\Modules\Base\Controller;
 use App\Modules\Tasks\Models\Task;
 
