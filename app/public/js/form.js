@@ -11,11 +11,20 @@
         // Get some values from elements on the page:
         var $form = $("#new-record-form");
 
-        console.log($form.serialize());
-
         // Send the data using post
         var request = $.post('/api/tasks', $form.serialize(), function(data) {
-
+            var record = $.parseJSON(data['data']['record']);
+            $('tbody').append($('<tr class="record-row-' + record.id + '">')
+                .append($('<td>')
+                    .append(record.id)
+                )
+                .append($('<td>')
+                    .append('<a href="/tasks/' + record.id + '">' + record.name + '</a>')
+                )
+                .append($('<td>')
+                    .append('<button onclick="$(this).DeleteRecord(' + record.id + ');">Delete Task</button>')
+                )
+            );
         }, 'json');
     };
 
@@ -35,7 +44,7 @@
             url: '/api/tasks/' + record_id + '/delete',
             type: 'DELETE',
             success: function(result) {
-                $('tbody').remove('.record-row-' + record_id);
+                $('.record-row-' + record_id).remove();
             }
         });
     };
