@@ -25,11 +25,17 @@ RUN apt-get update --fix-missing && apt-get install -y \
     php-common \
     php-json \
     php7.0-zip \
+    wget \
     zip \
     unzip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/
 RUN mv /usr/bin/composer.phar /usr/bin/composer
+
+# Install phpunit manually as composer install not being found
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
 
 RUN useradd -ms /bin/bash docker
 USER docker
