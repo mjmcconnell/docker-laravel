@@ -14,6 +14,15 @@ services:
       - laravel-network
     command: make run
 
+  frontend:
+    image: node:latest
+    command: make watch
+    working_dir: /src
+    volumes:
+      - ./frontend:/src
+      - ./app:/app
+      - /src/node_modules
+
   db:
     image: postgres:9.6.2
     environment:

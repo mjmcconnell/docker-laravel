@@ -8,4 +8,4 @@ run: install-laravel-deps migrate-tables
 	php artisan serve --host=0.0.0.0
 
 test:
-	phpunit
+	phpunit --testdox
