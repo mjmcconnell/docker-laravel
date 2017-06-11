@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="FrontendApp">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel Test App</title>
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="/css/angular-material.min.css">
 
         @yield('extra_styles')
+
+        <meta name="viewport" content="initial-scale=1" />
+
+        <title>Laravel Test App</title>
     </head>
-    <body>
-        <div class="container">
-            @include('Base::common.nav')
-        </div>
 
-        <div class="container">
-            @yield('content')
-        </div>
+    <body layout="column">
 
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        @include('Base::common.nav')
 
-        <!-- Bootstrap -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <md-content layout="row" flex class="content-wrapper">
+
+            <div layout="column" flex class="content-wrapper" id="primary-col">
+
+                <md-content flex layout-padding>
+
+                    @yield('content')
+
+                </md-content>
+
+            </div>
+        </md-content>
+
+        <!-- Third party libs -->
+        <script src="/js/vendor.js"></script>
+
+        <!-- Custom JS -->
+        <script src="/js/main.js"></script>
 
         @yield('extra_scripts')
+
     </body>
 </html>

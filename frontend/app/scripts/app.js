@@ -5,4 +5,4 @@
  */
 'use strict';
 
-var app = angular.module('App', ['ngMaterial']);
+var app = angular.module('FrontendApp', ['ngMaterial']);

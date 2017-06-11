@@ -1,20 +1,19 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
+<md-content>
+    <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate>
                 Laravel Test App
-            </a>
+            </h2>
             @if (Auth::guest())
-                <a class="navbar-brand pull-right" href="/auth/login">
+                <md-button href="/auth/login" aria-label="Log in">
                     login
-                </a>
+                </md-button>
             @else
-                <span class="navbar-brand">{{ Auth::user()->name }}</span>
-
-                <a class="navbar-brand pull-right" href="/auth/logout">
-                    log out
-                </a>
+                {{ Auth::user()->name }}
+                <md-button href="/auth/logout" aria-label="Log out">
+                    Log out
+                </md-button>
             @endif
         </div>
-    </div>
-</nav>
+    </md-toolbar>
+</md-content>

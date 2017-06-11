@@ -1,3 +1,6 @@
+build-fe:
+	docker-compose run frontend make build
+
 run:
 	docker-compose up
 
