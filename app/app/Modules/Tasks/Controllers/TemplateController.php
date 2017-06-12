@@ -20,7 +20,10 @@ class TemplateController extends Controller {
 
         return view(
             'Tasks::list',
-            ['records' => $records]
+            [
+                'records' => $records,
+                'json_records' => json_encode($records),
+            ]
         );
     }
 
