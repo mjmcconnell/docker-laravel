@@ -30,29 +30,23 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Current Tasks</div>
-            <table class="table" ng-show="records">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Task</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="record in records">
-                        <td>
-                            {[ record.id ]}
-                        </td>
-                        <td>
-                            <a href="/tasks/{[ record.id ]}">{[ record.name ]}</a>
-                        </td>
-                        <td>
-                            <button ng-click="deleteSelected($index)">Delete Task</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <md-list>
+                <md-subheader class="md-no-sticky">Tasks</md-subheader>
+                <md-toolbar class="md-theme-light">
+                    <h2 class="md-toolbar-tools"  layout="row">
+                        <span flex="10">ID</span>
+                        <span flex="70">Name</span>
+                        <span flex="20">Actions</span>
+                    </h2>
+                </md-toolbar>
+                <md-list-item ng-repeat="record in records" layout="row">
+                    <p flex="10">{[ record.id ]}</p>
+                    <p flex="70"><a href="/tasks/{[ record.id ]}">{[ record.name ]}</a></p>
+                    <div flex="20">
+                        <md-button class="md-raised md-warn" ng-click="deleteSelected($index)">Delete</md-button>
+                    </div>
+                </md-list-item>
+            </md-list>
         </div>
     </div>
 
