@@ -48,7 +48,7 @@
                             <a href="/tasks/{[ record.id ]}">{[ record.name ]}</a>
                         </td>
                         <td>
-                            <button>Delete Task</button>
+                            <button ng-click="deleteSelected($index)">Delete Task</button>
                         </td>
                     </tr>
                 </tbody>

@@ -56,4 +56,16 @@ app.controller('ListCtrl', function($scope, $http) {
         });
     };
 
+    $scope.deleteSelected = function(index) {
+        var record = $scope.records[index];
+
+        $http.delete('/api/tasks/' + record.id + '/delete').then(
+            function() {
+                $scope.records.splice(index, 1);
+            },
+            function(error) {
+            }
+        );
+    };
+
 });
