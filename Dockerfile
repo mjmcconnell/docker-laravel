@@ -41,9 +41,13 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
 RUN useradd -ms /bin/bash docker
 
-RUN apt-get update --fix-missing && apt-get install -y \
-    nodejs \
-    npm
+RUN apt-get install -y nodejs
 
 ADD . /
-RUN which node
+
+RUN cd /frontend && make build
+
+USER docker
+
+CMD cd /app && make run
+
